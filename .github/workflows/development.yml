@@ -127,6 +127,10 @@ jobs:
           echo "/opt/homebrew/opt/make/libexec/gnubin" >> $GITHUB_PATH
           echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
           echo "/opt/homebrew/opt/libtool/libexec/gnubin" >> $GITHUB_PATH
+           
+           brew tap homebrew/cask-versions
+           brew install --cask temurin8
+           echo "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin" >> $GITHUB_PATH
           
       - name: Build for ${{ matrix.platform_name }}
         env:
