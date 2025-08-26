@@ -127,6 +127,7 @@ jobs:
            brew tap homebrew/cask
            brew install --cask temurin@8
            echo "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin" >> $GITHUB_PATH
+           brew install ldid
           
       - name: Build for ${{ matrix.platform_name }}
         env:
