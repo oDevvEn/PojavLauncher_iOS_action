@@ -123,9 +123,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew update
-          brew install make gnu-sed automake libtool pkg-config wget cmake
-          ln -s /opt/homebrew/bin/gmake /usr/local/bin/gmake || true
+          brew install make gnu-sed automake libtool pkg-config wget cmake || true
+          echo "/opt/homebrew/opt/make/libexec/gnubin" >> $GITHUB_PATH
+          echo "/opt/homebrew/opt/gnu-sed/libexec/gnubin" >> $GITHUB_PATH
+          echo "/opt/homebrew/opt/libtool/libexec/gnubin" >> $GITHUB_PATH
           
       - name: Build for ${{ matrix.platform_name }}
         env:
