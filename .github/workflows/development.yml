@@ -84,7 +84,7 @@ jobs:
           git add Natives/resources/Frameworks/libgl4es_114.dylib
           git commit -am "CI: Update gl4es"
           git push
-          
+
       - name: Get JRE8
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -121,6 +121,12 @@ jobs:
           branch: buildjre17-21
           name: jre21-ios-aarch64
 
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install make gnu-sed automake libtool pkg-config wget cmake
+          ln -s /opt/homebrew/bin/gmake /usr/local/bin/gmake || true
+          
       - name: Build for ${{ matrix.platform_name }}
         env:
           password: ${{ secrets.ELLIE_MINI_SECRET }}
